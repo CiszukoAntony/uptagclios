@@ -149,7 +149,7 @@ import random
 import math
 import platform
 import sys
-import Convertidor_divisa
+## from func_divisa import convertir
 import func_comprobacion
 import func_juego_piedra_papel_tijera
 from utils import clear_window, loading, ansi_text, init_username, call_username, main_error, module_error
@@ -182,6 +182,8 @@ def main():
     """
 
     clear_window() # Limpia la pantalla del editor
+    print(f"{ansi_text.CYAN}Cargando entorno del sistema operativo UPTAG CLI OS...{ansi_text.RESET}")
+    loading(3, 1, "Cargando entorno del sistema operativo UPTAG CLI OS...  ")
     print(f"""{ansi_text.ORANGE_BACKGROUND_BOLD}
      ___  ___  ________  _________  ________  ________                 ________  ___       ___                 ________  ________      
     |\  \|\  \|\   __  \|\___   ___|\   __  \|\   ____\               |\   ____\|\  \     |\  \               |\   __  \|\   ____\     
@@ -261,13 +263,13 @@ def main():
                 print("Deberia mostrar el calculadora cientifica")
 
             elif opcion_usuario == 1:
-                Convertidor_divisa.conversor_tiempo_real()
+                convertir()
 
             elif opcion_usuario == 2:
                 print("Deberia mostrar el juego de adivina el numero")
 
             elif opcion_usuario == 3:
-                print("Deberia mostrar el juego de piedra, papel o tijera")
+                func_juego_piedra_papel_tijera.jugar()
 
             elif opcion_usuario == 4:
                 print("Deberia mostrar el manual de uso")
@@ -276,7 +278,6 @@ def main():
                 print("Deberia mostrar informacion del SO y creditos")
 
             elif opcion_usuario == 6:
-                print("Deberia apagarme")
                 break
 
             else:

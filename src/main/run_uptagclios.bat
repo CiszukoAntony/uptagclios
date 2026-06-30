@@ -66,5 +66,5 @@ if %errorlevel% neq 0 (
 echo %GREEN%[ERES UN EXITOSO]%RESET% %CYAN%Python%RESET% %WHITE%detectado correctamente en el sistema.%RESET%
 echo %WHITE%Iniciando UPTAG CLI OS...%RESET%
 timeout /t 3 >nul
-start python python/main.py
+start "UPTAG CLI OS" /MAX /D "%~dp0python" cmd /k "python main.py"
 exit
