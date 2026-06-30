@@ -1,5 +1,4 @@
 import random
-
 def jugar():
     """
     
@@ -9,6 +8,11 @@ def jugar():
     La función solicita la elección del usuario por consola, valida la entrada,
     genera una opción aleatoria para la computadora y determina el resultado
     (gana el usuario, gana la computadora o hay un empate).
+    
+    inputs:
+       usuario = input("Elige una opción (piedra, papel, tijera): ").lower()
+    
+    
     """
     opciones = ["piedra", "papel", "tijera"]
     
