@@ -1,0 +1,120 @@
+:root {
+
+    /* Paleta de Colores */
+    --orange-light: #ff7a3a;
+    --orange-main: #ff5900;
+    --orange-dark: #ff3a00;
+    --green-light: #60ff68;
+    --green-main: #18e222;
+    --green-dark: #05710a;
+    --blue-light: #76d2ff;
+    --blue-main: #00b4ff;
+    --blue-dark: #005f86;
+    --yellow-light: #ffc42c;
+    --yellow-main: #ffb800;
+    --yellow-dark: #cc9400;
+    --red-light: #f84c6b;
+    --red-main: #ff3057;
+    --red-dark: #bb002e;
+    --black: #000;
+    --white: #fff;
+
+    /* Degradados */
+    --degrade-orange: linear-gradient(135deg, var(--orange-light), var(--orange-main), var(--orange-dark));
+    --degrade-green: linear-gradient(135deg, var(--green-light), var(--green-main), var(--green-dark));
+    --degrade-blue: linear-gradient(135deg, var(--blue-light), var(--blue-main), var(--blue-dark));
+    --degrade-yellow: linear-gradient(135deg, var(--yellow-light), var(--yellow-main), var(--yellow-dark));
+    --degrade-red: linear-gradient(135deg, var(--red-light), var(--red-main), var(--red-dark));
+    --degrade-gray: linear-gradient(135deg, var(--gray-light), var(--gray-main), var(--gray-dark));
+    --degrade-black: linear-gradient(135deg, var(--black), var(--black), var(--black));
+    --degrade-white: linear-gradient(135deg, var(--white), var(--white), var(--white));
+    
+    /* Bordes */
+    --border-radius: 10px;
+    --border-width: 2px;
+    --padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    transition: all 0.5s ease;
+    border-style: groove;
+    color: var(--white);
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--degrade-orange);
+    background-image: var(--degrade-orange);
+    padding: var(--padding);
+    transition: all 0.5s ease;
+}
+
+header:hover {
+    font-size: 25px;
+    border: var(--border-width) solid var(--degrade-white);
+    background-image: var(--degrade-orange);
+    box-shadow: var(--degrade-orange) 0 0 10px;
+    transition: all 0.5s ease;
+}
+
+body {
+    padding: var(--padding);
+    border: var(--border-width) solid var(--degrade-white);
+    background-image: var(--degrade-black);
+    color: var(--white);
+    line-height: 1.5;
+    text-align: left;
+    margin: 10px;
+    font-family: Arial, sans-serif;
+    transition: all 0.5s ease;
+}
+
+body p {
+    padding: var(--padding);
+    border-style: groove;
+    border: var(--border-width) solid var(--degrade-white);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--padding);
+    font-size: 16px;
+    transition: all 0.5s ease;
+}
+
+body p:hover {
+    font-size: 18px;
+    border: var(--border-width) solid var(--degrade-white);
+    box-shadow: var(--degrade-orange) 0 0 10px;
+    transition: all 0.5s ease;
+}
+
+body pre {
+    padding: var(--padding);
+    border: var(--border-width) solid var(--degrade-white);
+    background-image: var(--degrade-black);
+    color: var(--white);
+    font-size: 12;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    transition: all 0.5s ease;
+}
+
+body pre:hover {
+    font-size: 19px;
+    border: var(--border-width) solid var(--degrade-white);
+    box-shadow: var(--degrade-orange) 0 0 10px;
+    transition: all 0.5s ease;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    border-style: groove;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--degrade-orange);
+    background-color: var(--degrade-black);
+    transition: all 0.5s ease;
+}

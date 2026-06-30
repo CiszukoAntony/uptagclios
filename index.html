@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPTAG CLI OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<header>
+    <h2>
+        <strong>UPTAG CLI OS</strong>
+    </h2>
+</header>
+
+<body>
+    <p>
+        MiniProyecto de Algoritmo y Programacion. <br>
+        <strong>UPTAG PNfi S10 T1T1.</strong> <br>
+
+        <h3>INTEGRANTES:</h3>
+        - Francisco Garcia (33.251.860) <br>
+        - Luis Sanchez (32.630.801) <br>
+        - Ivan Quevedo (34.570.333) <br>
+        - Santiago Rojas (33.652.368) <br>
+        - Hanzer Sivira (32.913.679) <br>
+            
+        Coro, Falcon, Venezuela. 2026. <br>
+
+        <br> <strong>Descripción General:</strong> <br>
+
+        <strong>- El proyecto</strong> consiste en el diseño e implementación de un simulador de Sistema Operativo basado en una Interfaz de Línea de Comandos (CLI). El sistema operará a través de un menú visual estructurado con bordes decorativos (ej. usando el carácter "=") e índices numéricos. Este entorno integrará un conjunto de utilidades prácticas y de entretenimiento, gestionadas a través de una arquitectura modular basada en funciones. El programa garantiza una experiencia de usuario continua gracias a un ciclo de ejecución infinito que solo se interrumpe cuando el usuario selecciona explícitamente la opción de salir, además de estar blindado contra errores de digitación mediante el manejo de excepciones. <br>
+
+        <br> <strong>A. Entradas (Inputs):</strong> <br>
+
+        - Navegación del Sistema: Selección de opciones a través de números enteros (del 1 al máximo de opciones disponibles en el menú principal). <br>
+
+        - Datos de Aplicaciones Utilitarias: Calculadora Científica: Ingreso de expresiones matemáticas o números y operadores. <br>
+
+        - Conversor de Divisas: Ingreso del monto a convertir y selección de la moneda de origen y destino. <br>
+
+        - Datos de Entretenimiento (Juegos): <br>
+
+        - Adivina el Número: Ingreso de intentos numéricos enteros. <br>
+
+        - Piedra, Papel o Tijera: Selección numérica o de texto (strings) representando la jugada del usuario. <br>
+
+        - Señales de interrupción: Teclas como [ENTER] para continuar o comandos de salida. <br>
+
+        <br> <strong>B. Proceso (Process):</strong> <br>
+
+        - Bucle Principal (Estructura Repetitiva): Un ciclo while True (o "Mientras" en PSeInt) que mantiene el OS en ejecución constante, refrescando la pantalla y mostrando el menú principal tras cada acción terminada. <br>
+
+        - Manejo y Validación de Errores: Uso de bloques try...except para capturar errores de tipo (ej. ingresar una letra cuando se pide un número para navegar el menú) y evitar el "crasheo" del sistema. <br>
+
+        - Enrutamiento Lógico (Condicionales): Estructuras if / elif / else (o "Según / Caso") que evalúan la entrada del usuario y hacen el llamado a la función correspondiente. <br>
+
+        - Ejecución Modular (Funciones): Cada "aplicación" del sistema operativo vive en su propia función. <br>
+
+        - Lógica del Juego Adivinanza: Se genera un número aleatorio; un ciclo while evalúa la entrada del usuario usando condicionales para determinar la distancia absoluta y devolver el estado de "Frio" o "Caliente". <br>
+
+        - Lógica de PPT: Uso de la librería random para la jugada de la máquina y condicionales lógicos combinados (and/or) para determinar victoria, derrota o empate. <br>
+
+        - Limpieza de pantalla: Ejecución de comandos del sistema anfitrión (cls o clear) para simular el refresco de pantalla del OS. <br>
+
+        <br> <strong>C. Salidas (Outputs):</strong> <br>
+
+        Interfaz Gráfica de Texto (TUI): Menús interactivos delineados con separadores visuales (=========================) que muestran las aplicaciones instaladas: <br>
+
+        - Calculadora Científica <br>
+
+        - Conversor de Divisas <br>
+
+        - Juego: Adivina el Número <br>
+
+        - Juego: Piedra, Papel o Tijera <br>
+
+        - Manual de Uso <br>
+
+        - Información del OS y Créditos <br>
+
+        - Salir del OS <br>
+
+        <br> <strong>- Resultados Computados:</strong> Valores numéricos con formato exacto o decimal (resultados matemáticos y conversiones monetarias). <br>
+
+        <strong>- Feedback de Usuario:</strong> Mensajes de estado como alertas de error ("Entrada inválida, intente de nuevo"), pistas interactivas de los juegos ("¡Estás muy caliente!") y notificaciones del sistema ("Saliendo del OS..."). <br>
+
+        <strong>Requisitos Técnicos y Metodológicos a cumplir:</strong> <br>
+
+        <strong>- Trabajo Colaborativo:</strong> Cada integrante del equipo desarrollará y será responsable de al menos un módulo o "aplicación" funcional del OS. <br>
+
+        <strong>- Modularidad:</strong> Uso obligatorio de funciones (def en Python / SubProceso en PSeInt) para encapsular la lógica de cada opción del menú. <br>
+
+        <strong>- Documentación:</strong> El código fuente contará con Docstrings al inicio de cada función explicando sus parámetros y retornos, así como comentarios de línea (#) para bloques lógicos complejos. <br>
+
+        <strong>Diseño Previo:</strong> Se entregará el Pseudocódigo y Diagrama de Flujo del menú principal y sus ramificaciones elaborados en la herramienta PSeInt. <br>
+
+        <br> <strong>¿Qué problemática resuelve?</strong> <br>
+
+        En el contexto actual de la informática, los usuarios a menudo dependen de múltiples aplicaciones pesadas y separadas (una app de calculadora, consultas de divisas en navegadores web, juegos casuales independientes) para realizar tareas cotidianas sencillas. Esto genera tres problemas principales: <br>
+
+        <strong>- Consumo de recursos:</strong> Mantener múltiples aplicaciones o pestañas del navegador abiertas consume excesiva memoria RAM y ciclos de procesamiento, lo cual es ineficiente, especialmente en equipos de bajos recursos o hardware antiguo. <br>
+
+        <strong>- Pérdida de foco y tiempo (Context Switching):</strong> Cambiar constantemente entre diferentes interfaces gráficas distrae al usuario y reduce la agilidad para resolver problemas rápidos (como un cálculo relámpago o una conversión rápida). <br>
+
+        <strong>- Fragmentación Educativa:</strong> Desde la perspectiva del estudiante de informática, comprender cómo pequeñas piezas de código se unen para formar un ecosistema de software grande suele ser abstracto y difícil de asimilar. <br>
+
+        <br> <strong>La Solución aportada por el proyecto:</strong> <br>
+
+        Este Mini Sistema Operativo CLI resuelve estas problemáticas ofreciendo un entorno unificado, ultra-ligero y libre de distracciones. Al centralizar herramientas vitales (matemáticas, financieras) y opciones de esparcimiento (juegos) en una sola interfaz de texto, el programa consume una cantidad ínfima de recursos del sistema anfitrión, respondiendo de manera instantánea. <br>
+
+        <strong>- Además</strong>, blinda al usuario contra la frustración operativa mediante su sistema de validación de errores (try-except), garantizando que la herramienta no se cierre abruptamente ante una equivocación humana. Finalmente, desde el punto de vista académico, resuelve el reto de la integración: demuestra en la práctica cómo la arquitectura modular (modularidad por funciones) permite a un grupo de programadores colaborar en un mismo ecosistema, construyendo un producto escalable donde cada "aplicación" es un engranaje de un sistema mayor. <br> 
+
+        <strong>Según el profesor Carlos Noguera, para obtener la calificación máxima, se debe cumplir con los siguientes criterios:</strong> <br>
+
+        <strong>- Modularidad:</strong> Uso obligatorio de funciones (def en Python / SubProceso en PSeInt) para encapsular la lógica de cada opción del menú. <br>
+        
+        <strong>- Documentación:</strong> El código fuente contará con Docstrings al inicio de cada función explicando sus parámetros y retornos, así como comentarios de línea (#) para bloques lógicos complejos. <br>
+        
+        <strong>- Diseño Previo:</strong> Se entregará el Pseudocódigo y Diagrama de Flujo del menú principal y sus ramificaciones elaborados en la herramienta PSeInt. <br>
+
+        <br>
+            <pre>
+                Copyright (c) 2026 Ciszuko
+
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:
+
+                The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.
+
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.
+            </pre>
+        </p>
+</body>
+
+<footer>
+        <p>
+            UPTAG CLI OS Copyright &copy; 2026 CiszukoAntony. Todos los derechos reservados.
+            <br>
+            <p>Hecho por:</p>
+            <p>- Francisco Garcia</p>
+            <p>- Santiago Rojas</p>
+            <p>- Hanzer Sivira</p>
+            <p>- Ivan Quevedo</p>
+            <p>- Luis Sanchez</p>
+        </p>
+</footer>
+
+</html>
