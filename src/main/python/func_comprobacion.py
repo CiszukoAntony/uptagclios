@@ -18,3 +18,14 @@ def validar_divisor(mensaje):
                 print("Error: El divisor no puede ser cero. Intente de nuevo.")
         except ValueError:
             print("Error: Introduzca un número válido.")
+def validar_mayor_cero(mensaje):
+    """Solicita un número flotante y se asegura de que sea mayor a cero."""
+    while True:
+        try:
+            valor = float(input(mensaje))
+            if 0<valor:
+                return valor
+            else:
+                print("Error:La cantidad debe sermayor a cero. Intente de nuevo.")
+        except ValueError:
+            print("Error: Introduzca un número válido.")
