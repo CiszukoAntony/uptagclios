@@ -149,15 +149,10 @@ import random
 import math
 import platform
 import sys
-import main
-import utils
-from utils import clear_window, loading, ansi_text
-
-# Datos del modulo
-
-__name__ = "__main__"
-__file__ = "main.py"
-__package__ = "__uptagclios__"
+import Convertidor_divisa
+import func_comprobacion
+import func_juego_piedra_papel_tijera
+from utils import clear_window, loading, ansi_text, init_username, call_username, main_error, module_error
 
 # Main.
 
@@ -187,7 +182,7 @@ def main():
     """
 
     clear_window() # Limpia la pantalla del editor
-    print(f"""{ansi_text.ORANGE_BACKGROUD_BOLD}
+    print(f"""{ansi_text.ORANGE_BACKGROUND_BOLD}
      ___  ___  ________  _________  ________  ________                 ________  ___       ___                 ________  ________      
     |\  \|\  \|\   __  \|\___   ___|\   __  \|\   ____\               |\   ____\|\  \     |\  \               |\   __  \|\   ____\     
     \ \  \|\  \ \  \|\  \|___ \  \_\ \  \|\  \ \  \___|   ____________\ \  \___|\ \  \    \ \  \  ____________\ \  \|\  \ \  \___|_    
@@ -199,12 +194,11 @@ def main():
     print(f"{ansi_text.CYAN}Bienvenido/a al sistema operativo {ansi_text.ORANGE}UPTAG CLI OS{ansi_text.RESET}...", end=" ", flush=True)
     loading(3, 0)
     print(f"{ansi_text.WHITE}Estamos preparando todo para ti...{ansi_text.RESET}")
+
     loading(6, 1, "Preparando el equipo :p ")
+    init_username()
 
-    nombre_usuario = input(f"{ansi_text.WHITE}¿Cual es tu nombre?{ansi_text.RESET}{ansi_text.GRAY}...{ansi_text.RESET}{ansi_text.BLUE_BACKGROUD_BOLD}\n >>> {ansi_text.RESET}").strip().title()
-    loading(1, 0, "Registrando usuario...")
-
-    print(f"{ansi_text.WHITE}¡Hola! {ansi_text.CYAN}{nombre_usuario}{ansi_text.RESET}, ¡Bienvenido/a! al sistema operativo {ansi_text.ORANGE}UPTAG CLI OS{ansi_text.RESET}...{ansi_text.RESET}")
+    print(f"{ansi_text.WHITE}¡Hola! {call_username()}, ¡Bienvenido/a! al sistema operativo {ansi_text.ORANGE}UPTAG CLI OS{ansi_text.RESET}...{ansi_text.RESET}")
     loading(2, 1, "Cargando entorno... ")
 
     input(f"{ansi_text.WHITE}=== PRESIONA {ansi_text.GREEN}ENTER{ansi_text.RESET} PARA {ansi_text.BLUE}INICIAR{ansi_text.RESET} EL SISTEMA OPERATIVO {ansi_text.ORANGE}UPTAG CLI OS{ansi_text.RESET}{ansi_text.WHITE} ==={ansi_text.RESET}")
@@ -214,7 +208,7 @@ def main():
         # Limpieza de pantalla pre-menu.
         clear_window()
         print(f"{ansi_text.YELLOW}={ansi_text.RESET}" * 140)
-        print(f"""{ansi_text.ORANGE_BACKGROUD_BOLD}
+        print(f"""{ansi_text.ORANGE_BACKGROUND_BOLD}
      ___  ___  ________  _________  ________  ________                 ________  ___       ___                 ________  ________      
     |\  \|\  \|\   __  \|\___   ___|\   __  \|\   ____\               |\   ____\|\  \     |\  \               |\   __  \|\   ____\     
     \ \  \|\  \ \  \|\  \|___ \  \_\ \  \|\  \ \  \___|   ____________\ \  \___|\ \  \    \ \  \  ____________\ \  \|\  \ \  \___|_    
@@ -225,7 +219,7 @@ def main():
         
         print(f"{ansi_text.YELLOW}={ansi_text.RESET}" * 140)
 
-        print(f"\n {ansi_text.WHITE}[{ansi_text.CYAN} ! {ansi_text.WHITE}] Buenas {ansi_text.CYAN}{nombre_usuario}{ansi_text.RESET}. ¿Que deseas hacer hoy...?{ansi_text.RESET} \n".center(100))
+        print(f"\n {ansi_text.WHITE}[{ansi_text.CYAN} ! {ansi_text.WHITE}] Buenas {call_username()}. ¿Que deseas hacer hoy...?{ansi_text.RESET} \n".center(100))
         loading(1)
 
         opciones = [
@@ -260,14 +254,14 @@ def main():
         print(f"{ansi_text.GRAY}-{ansi_text.RESET}" * 80)
 
         try:
-            opcion_usuario = int(input(f"{ansi_text.CYAN}{nombre_usuario}{ansi_text.WHITE}, seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... \n {ansi_text.BLUE_BACKGROUD_BOLD}>>>{ansi_text.RESET} "))-1
-            print(f"\n{ansi_text.CYAN}{nombre_usuario}{ansi_text.WHITE}, seleccionó la opción {ansi_text.ORANGE}{opciones[opcion_usuario]}.{ansi_text.RESET}")
+            opcion_usuario = int(input(f"{call_username()}, seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... \n {ansi_text.BLUE_BACKGROUND_BOLD}>>>{ansi_text.RESET} "))-1
+            print(f"\n{call_username()}{ansi_text.WHITE}, seleccionó la opción {ansi_text.ORANGE}{opciones[opcion_usuario]}.{ansi_text.RESET}")
 
             if opcion_usuario == 0:
                 print("Deberia mostrar el calculadora cientifica")
 
             elif opcion_usuario == 1:
-                print("Deberia mostrar la conversor de divisas")
+                Convertidor_divisa.conversor_tiempo_real()
 
             elif opcion_usuario == 2:
                 print("Deberia mostrar el juego de adivina el numero")
@@ -286,15 +280,15 @@ def main():
                 break
 
             else:
-                print(f"{ansi_text.RED}Error: Opción inválida, {ansi_text.CYAN}{nombre_usuario}{ansi_text.RESET}, intente de nuevo. Seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... {ansi_text.RESET}")
+                print(f"{ansi_text.RED}Error: Opción inválida, {call_username()}, intente de nuevo. Seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... {ansi_text.RESET}")
 
         except Exception as error:
-            print(f"{ansi_text.RED}Error: {error}, {ansi_text.CYAN}{nombre_usuario}{ansi_text.RESET}, intente de nuevo. Seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... {ansi_text.RESET}")
+            print(f"{ansi_text.RED}Error: {error}, {ansi_text.CYAN}{call_username()}{ansi_text.RESET}, intente de nuevo. Seleccione una opción dentro del rango {ansi_text.ORANGE}1 a {len(opciones)}{ansi_text.WHITE} opciones... {ansi_text.RESET}")
 
         loading(1)
-        input(f"\n{ansi_text.WHITE}=== {ansi_text.CYAN}{nombre_usuario}{ansi_text.WHITE}, presiona {ansi_text.GREEN}ENTER{ansi_text.WHITE} para volver al {ansi_text.ORANGE}MENU PRINCIPAL{ansi_text.RESET} ===\n")
+        input(f"\n{ansi_text.WHITE}=== {call_username()}, presiona {ansi_text.GREEN}ENTER{ansi_text.WHITE} para volver al {ansi_text.ORANGE}MENU PRINCIPAL{ansi_text.RESET} ===\n")
 
-    print(f"\n{ansi_text.WHITE}¡Adios {ansi_text.CYAN}{nombre_usuario}{ansi_text.WHITE}!")
+    print(f"\n{ansi_text.WHITE}¡Adios {call_username()}!")
     loading(1)
 
 ### Comprobación de main ###
@@ -302,21 +296,20 @@ if __name__ == "__main__":
     try:
         clear_window()
         main()
-    # Detección de interrupción.
+
     except KeyboardInterrupt as kd:
-        print(f"\n{ansi_text.RED}Error: (Control + C) detectado... {kd}{ansi_text.RESET}")
+        print(f"\n{ansi_text.RED}Error: (Control + C) detectado de forma abrupta... {kd}{ansi_text.RESET}")
+        
     except Exception as error:
-        print(f"\n{ansi_text.RED}Error fatal: {error}{ansi_text.RESET}")
+        print(f"\n{ansi_text.RED}Error fatal del sistema: {error}{ansi_text.RESET}")
+
+    print(f"\n{ansi_text.RED}Saliendo del sistema operativo...{ansi_text.RESET}\n")
+    loading(3, 1, "Apagando...")
+    clear_window()
+    print(f"{ansi_text.WHITE}Gracias por usar {ansi_text.ORANGE}UPTAG CLI OS.{ansi_text.RESET}\n")
+    loading(2, 1, "Cerrando...")
+    sys.exit()
 
 else:
     clear_window()
-    print(f"\n{ansi_text.RED}Error: hubo un error ejecutando el modulo principal{ansi_text.RESET}\n")
-    print(f"{ansi_text.GRAY}Modulo: {__name__}\nARCHIVO: {__file__}\nPAQUETE: {__package__}\nDOCUMENTACION:\n {__doc__}{ansi_text.RESET}")
-
-# Salida del sistema operativo.
-print(f"\n{ansi_text.RED}Saliendo del sistema operativo...{ansi_text.RESET}\n")
-loading(3, 1, "Apagando...")
-clear_window()
-print(f"{ansi_text.WHITE}Gracias por usar {ansi_text.ORANGE}UPTAG CLI OS.{ansi_text.RESET}\n")
-loading(1, 0, "Cerrando...")
-sys.exit()
+    main_error(__name__, __file__, __package__, __doc__)

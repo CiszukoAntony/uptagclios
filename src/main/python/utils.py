@@ -23,12 +23,6 @@ import math
 import platform
 import sys
 
-# Datos del modulo.
-
-__name__ = "__utils__"
-__file__ = "utils.py"
-__package__ = "__uptagclios__"
-
 ### UTILIDADES ###
 
 # Colores y estilos ANSI
@@ -52,7 +46,7 @@ class ansi_text:
     BLACK = "\033[30m"
     GRAY = "\033[90m"
 
-    BLUE = "\033[40m"
+    BLUE = "\033[34m"
     YELLOW = "\033[33m"
     RED = "\033[31m"
     
@@ -62,8 +56,8 @@ class ansi_text:
     GREEN = "\033[32m"
 
     #STYLES
-    BLUE_BACKGROUD_BOLD = "\033[1;34;40m"
-    ORANGE_BACKGROUD_BOLD = "\033[1;38;5;208;40m"
+    BLUE_BACKGROUND_BOLD = "\033[1;34;40m"
+    ORANGE_BACKGROUND_BOLD = "\033[1;38;5;208;40m"
 
 # Limpieza de pantalla.
 
@@ -128,7 +122,7 @@ def loading(seconds: int = 3, show_bar: bool = True, msg:str = "Cargando..."):
                 visible_text = f"[{bar}] {remaining} {sec_text}"
                 # Rellenamos con espacios hasta un ancho fijo para borrar cualquier resto anterior
                 padding = " " * max(0, 60 - len(visible_text))
-                line = f"\n{ansi_text.WHITE}{msg} | {ansi_text.RESET}{ansi_text.BLUE_BACKGROUD_BOLD}[{ansi_text.RESET}{ansi_text.ORANGE_BACKGROUD_BOLD}{bar}{ansi_text.RESET}{ansi_text.BLUE_BACKGROUD_BOLD}]{ansi_text.RESET}{ansi_text.WHITE} | {remaining} {sec_text}{ansi_text.RESET}{padding}"
+                line = f"{ansi_text.WHITE}{msg} | {ansi_text.RESET}{ansi_text.BLUE_BACKGROUND_BOLD}[{ansi_text.RESET}{ansi_text.ORANGE_BACKGROUND_BOLD}{bar}{ansi_text.RESET}{ansi_text.BLUE_BACKGROUND_BOLD}]{ansi_text.RESET}{ansi_text.WHITE} | {remaining} {sec_text}{ansi_text.RESET}{padding}"
                 print(f"\r{line}", end="", flush=True)
                 time.sleep(1)
 
@@ -138,11 +132,78 @@ def loading(seconds: int = 3, show_bar: bool = True, msg:str = "Cargando..."):
     except Exception as e:
         print(f"\n{ansi_text.RED}Error: {e}{ansi_text.RESET}")
 
+# Comprobacion de nombre de usuario.
+
+username = "usser"
+
+def init_username():
+    """
+    Solicita el nombre del usuario, lo valida para evitar campos vacíos,
+    limpia espacios innecesarios (incluso internos) y lo registra de forma global.
+    """
+    global username  # Modificamos la variable global
+    
+    while True:
+        new_username = input(
+            f"{ansi_text.WHITE}¿Cual es tu nombre de usuario?{ansi_text.RESET}"
+            f"{ansi_text.GRAY}...{ansi_text.RESET}"
+            f"{ansi_text.BLUE_BACKGROUND_BOLD}\n >>> {ansi_text.RESET}"
+        )
+        
+        correct_username = " ".join(new_username.split()).title()
+        
+        if correct_username == "":
+            print(f"{ansi_text.RED}Error: El nombre no puede estar vacío. Por favor, ingresa un nombre válido.{ansi_text.RESET}\n")
+            continue  # Reinicia el ciclo para volver a pedir el nombre
+
+        if not correct_username.replace(" ", "").isalpha():
+            print(f"{ansi_text.RED}Error: El nombre solo debe contener letras (no se permiten números ni símbolos).{ansi_text.RESET}\n")
+            continue
+            
+        username = correct_username
+        break
+    
+    loading(2, 1, f"Registrando usuario... {username}")
+    return username
+
+def call_username():
+    """
+    Devuelve el nombre del usuario registrado con estilos ANSI aplicados.
+    """
+    global username
+    # Corregido: Añadida la 'f' de f-string y la variable real
+    return f"{ansi_text.CYAN}{username}{ansi_text.RESET}"
+
+def module_error(module_name, module_file, module_package, module_doc):
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    print(f"{ansi_text.RED}ADVERTENCIA DE SEGURIDAD DEL SISTEMA OS{ansi_text.RESET}")
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    print(f"Error: No puedes iniciar el sistema desde un módulo.")
+    print(f"Por razones de arquitectura modular, debes ejecutar el archivo principal.\n")
+    
+    print(f"{ansi_text.GRAY}Datos de depuración del Intérprete:{ansi_text.RESET}")
+    print(f"- Entorno (__name__): {module_name} (Modo de ejecución directa)")
+    print(f"- Paquete (__package__): {module_package}")
+    print(f"- Ubicación: {module_file}")
+    print(f"- Documentación activa:\n{module_doc}")
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    print(f"\n{ansi_text.GREEN}SOLUCIÓN: Ejecuta en tu terminal: python main.py{ansi_text.RESET}\n")
+
+def main_error(module_name, module_file, module_package, module_doc):
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    print(f"{ansi_text.RED}Error: hubo un error ejecutando el modulo principal{ansi_text.RESET}")
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    
+    print(f"{ansi_text.GRAY}Datos de depuración del Intérprete:{ansi_text.RESET}")
+    print(f"- Entorno (__name__): {module_name}")
+    print(f"- Paquete (__package__): {module_package}")
+    print(f"- Ubicación: {module_file}")
+    print(f"- Documentación activa:\n{module_doc}")
+    print(f"{ansi_text.RED}======================================================================{ansi_text.RESET}")
+    print(f"\n{ansi_text.GREEN}SOLUCIÓN: Ejecuta en tu terminal: python main.py de nuevo o contacte a servicio de soporte tecnico.{ansi_text.RESET}\n")
+
 ### Comprobación de main ###
 
 if __name__ == "__main__":
-    pass
-else:
     clear_window()
-    print(f"\nError: no estas ejecutando el modulo principal\n")
-    print(f"Modulo: {__name__}\nARCHIVO: {__file__}\nPAQUETE: {__package__}\nDOCUMENTACION:\n {__doc__}")
+    module_error(__name__, __file__, __package__, __doc__)
