@@ -1,3 +1,6 @@
+// Algoritmo Principal: Simulador de Sistema Operativo UPTAG CLI OS
+// Asignatura: Algoritmo y Programación 1 - Profesor Carlos Noguera
+// Trayecto I - Sección: UPTAG PNfi S10 T1T1.
 Algoritmo UPTAG_CLI_OS
 	Definir usuario Como Cadena
 	Definir opcion_seleccionada Como Entero
@@ -8,7 +11,7 @@ Algoritmo UPTAG_CLI_OS
 	
 	Escribir "Iniciando UPTAG CLI OS..."
 	
-	// Inicializacion con parametros (este si lleva parentesis porque tiene argumento)
+	// Inicialización con parámetros (este sí lleva paréntesis porque tiene argumento)
 	init_username(usuario)
 	
 	sistema_encendido <- Verdadero
@@ -67,7 +70,7 @@ Algoritmo UPTAG_CLI_OS
 FinAlgoritmo
 
 // =======================================================
-// MODULO CENTRAL: UTILS & CAPA DE CONTROL
+// MÓDULO CENTRAL: UTILS & CAPA DE CONTROL
 // =======================================================
 
 SubProceso init_username(usuario Por Referencia)
@@ -102,7 +105,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 1: CALCULADORA CIENTIFICA (REGLAS BASICAS)
+// MÓDULO 1: CALCULADORA CIENTÍFICA (REGLAS BÁSICAS)
 // =======================================================
 SubProceso calculadora_cientifica
 	Definir op Como Entero
@@ -145,7 +148,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 2: CONVERSOR DE DIVISAS (CORREGIDO MULTILNEA)
+// MÓDULO 2: CONVERSOR DE DIVISAS (CORREGIDO MULTILÍNEA)
 // =======================================================
 SubProceso conversor_divisas
 	Definir desde_m, hacia_m Como Cadena
@@ -166,7 +169,7 @@ SubProceso conversor_divisas
 	SiNo
 		tasa <- 1.0
 		
-		// Estructuras condicionales formateadas correctamente l?nea por l?nea
+		// Estructuras condicionales formateadas correctamente línea por línea
 		Si desde_m = "USD" Y hacia_m = "EUR" Entonces
 			tasa <- 0.92
 		FinSi
@@ -193,7 +196,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 3: JUEGO ADIVINA EL NUMERO
+// MÓDULO 3: JUEGO ADIVINA EL NÚMERO
 // =======================================================
 SubProceso juego_adivina_numero
 	Definir secreto, num_usuario, conteo Como Entero
@@ -223,7 +226,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 4: JUEGO PIEDRA, PAPEL O TIJERA
+// MÓDULO 4: JUEGO PIEDRA, PAPEL O TIJERA
 // =======================================================
 SubProceso juego_piedra_papel_tijera
 	Definir eleccion_u, eleccion_pc Como Entero
@@ -251,7 +254,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 5: MANUAL DE USO
+// MÓDULO 5: MANUAL DE USO
 // =======================================================
 SubProceso manual_uso
 	Escribir "--- MANUAL DE USO ---"
@@ -262,7 +265,7 @@ FinSubProceso
 
 
 // =======================================================
-// MODULO 6: INFORMACION DEL SO Y CREDITOS
+// MÓDULO 6: INFORMACIÓN DEL SO Y CRÉDITOS
 // =======================================================
 SubProceso informacion_so
 	Escribir "--- INFORMACION DEL SO ---"
