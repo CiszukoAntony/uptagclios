@@ -124,4 +124,4 @@ SOFTWARE.{ansi_text.RESET}
 
 if __name__ == "__main__":
     clear_window()
-    info_and_credits() # CORREGIDO: Ahora ejecuta la función en lugar de forzar un error de módulo
+    module_error(__name__, __file__, __package__, __doc__)
