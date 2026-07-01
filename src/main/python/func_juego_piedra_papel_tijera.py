@@ -1,4 +1,11 @@
+### Ejecuta una partdia del juego Piedra, Papel o tijera contra la computadora 
+  ### pide datos al usuario para la eleccion
+  ###genera una opcion aleatoria de la computadora que determina el resultado 
+  ### gana el usuario o gana la computadora o hay un empate 
+
 import random
+import utils 
+
 def jugar():
     """
     
@@ -9,15 +16,31 @@ def jugar():
     genera una opción aleatoria para la computadora y determina el resultado
     (gana el usuario, gana la computadora o hay un empate).
     
+    ---
+    
+    Args: 
+        nones.
+    ---
+    
+    raises:
+       nones.
+    ---
+    
+    returns:
+       Retorna si la opcion que ingresa el usuario no es valida 
+    --- 
+    
     inputs:
-       usuario = input("Elige una opción (piedra, papel, tijera): ").lower()
+        pide una opcion al usuario para escoger piedra, papel o tijera 
+    
+    
     
     
     """
     opciones = ["piedra", "papel", "tijera"]
     
     print("=" * 35)
-    print("¡Bienvenido a Piedra, Papel o Tijera!")
+    print(f"{utils.ansi_text.GREEN}¡Bienvenido a Piedra, Papel o Tijera!")
     print("=" * 35)
     
     # Entrada del jugador
@@ -25,24 +48,26 @@ def jugar():
     
     # Validar que la entrada sea correcta
     if usuario not in opciones:
-        print("❌ Opción no válida. Inténtalo de nuevo escribiendo piedra, papel o tijera.")
+        print(f"{utils.ansi_text.RESET} {utils.ansi_text.RED}Opción no válida. Inténtalo de nuevo escribiendo piedra, papel o tijera.{utils.ansi_text.RESET}")
         return
 
     # Elección de la computadora
     computadora = random.choice(opciones)
-    print(f"\nTú elegiste: {usuario.capitalize()}")
-    print(f"La computadora eligió: {computadora.capitalize()}\n")
+    print(f"{utils.ansi_text.BLUE}\nTú elegiste: {usuario.capitalize()}")
+    print(f"La computadora eligió: {computadora.capitalize()}\n{utils.ansi_text.RESET}")
     
     # Determinar el ganador
     if usuario == computadora:
-        print("🤝 ¡Es un empate!")
+        print(f"{utils.ansi_text.ORANGE}🤝 ¡Es un empate!{utils.ansi_text.RESET}")
     elif (usuario == "piedra" and computadora == "tijera") or \
          (usuario == "papel" and computadora == "piedra") or \
          (usuario == "tijera" and computadora == "papel"):
-        print("🎉 ¡Ganaste! ¡Felicitaciones!")
+        print(f"{utils.ansi_text.PURPLE}🎉 ¡Ganaste! ¡Felicitaciones!{utils.ansi_text.RESET}")
     else:
-        print("😢 Perdiste. ¡Suerte para la próxima!")
+        print(f"{utils.ansi_text.RED}😢 Perdiste. ¡Suerte para la próxima!{utils.ansi_text.RESET}")
 
-# Ejecutar el juego
+### Comprobación de main ###
+
 if __name__ == "__main__":
-    jugar()
+    utils.clear_window()
+    utils.module_error(__name__, __file__, __package__, __doc__)
