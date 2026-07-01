@@ -1,3 +1,11 @@
+###Esta función centraliza toda la lógica del juego:
+    #1. Muestra la bienvenida.
+    #2. Genera un número aleatorio entre 1 y 100.
+    #3. Solicita y valida que la entrada del usuario sea un número entero.
+    #4. Compara el intento, da pistas (alto/bajo) y cuenta los intentos.
+    #5. Permite reiniciar el juego al terminar.
+
+
 import random
 import utils
 
@@ -11,6 +19,22 @@ def juego_adivina_el_numero():
     3. Solicita y valida que la entrada del usuario sea un número entero.
     4. Compara el intento, da pistas (alto/bajo) y cuenta los intentos.
     5. Permite reiniciar el juego al terminar.
+    
+    
+    Args:
+        none.
+    ---
+    Returns:
+        none.
+    ---
+    raises:
+        none.
+    ---
+    
+    excepts:
+        retorna un valuerror
+    
+    
     """
     while True:
         # Configuración inicial de la partida
@@ -19,9 +43,9 @@ def juego_adivina_el_numero():
         adivinado = False
         
         # Bienvenida
-        print("=" * 45)
+        print("=" * 90)
         print(f"{utils.ansi_text.GREEN} ¡BIENVENIDO AL JUEGO DE ADIVINA EL NÚMERO!{utils.ansi_text.RESET} ")
-        print("=" * 45)
+        print("=" * 90)
         print(f" {utils.ansi_text.BLUE} He pensado un número entre 1 y 100.{utils.ansi_text.RESET}")
         print(f" {utils.ansi_text.GREEN}Intenta adivinarlo en el menor número de intentos posible.{utils.ansi_text.RESET}\n")
         
@@ -40,9 +64,9 @@ def juego_adivina_el_numero():
             
             # Verificación del número
             if intento_usuario < numero_secreto:
-                print(f"{utils.ansi_text.GREEN}➡️ Demasiado bajo. ¡Intenta con uno más grande!\n")
+                print(f"{utils.ansi_text.GREEN}➡ Demasiado bajo. ¡Intenta con uno más grande!\n")
             elif intento_usuario > numero_secreto:
-                print(f"➡️ Demasiado alto. ¡Intenta con uno más chico!{utils.ansi_text.RESET}\n")
+                print(f"➡ Demasiado alto. ¡Intenta con uno más chico!{utils.ansi_text.RESET}\n")
             else:
                 print(f"\n🎉 {utils.ansi_text.YELLOW}¡Felicidades! ¡Has adivinado el número secreto!")
                 print(f"🏆 Te tomó un total de {intentos} intentos ganar la partida.\n{utils.ansi_text.RESET}")
@@ -55,6 +79,8 @@ def juego_adivina_el_numero():
             break
         print("\n" * 2)  # Separador para la nueva partida
 
-# Para ejecutar el juego directamente
+### Comprobación de main ###
+
 if __name__ == "__main__":
-    juego_adivina_el_numero()
+    utils.clear_window()
+    utils.module_error(__name__, __file__, __package__, __doc__)
