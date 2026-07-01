@@ -1,5 +1,6 @@
 import math
-from func_comprobacion import validar_flotante,validar_divisor,validar_num_positivo,validar_entero
+import cmath
+from func_comprobacion import validar_flotante,validar_divisor,validar_entero
 def calculadora():
     # Calculadora Numerica Basica
 
@@ -15,15 +16,16 @@ def calculadora():
         4. Division
         5. Potencia
         6. Raiz Cuadrada
-        7. Coseno
-        8. Seno
-        9. Tangente
-        10. Salir""")
+        7. Raiz Cubica
+        8. Coseno
+        9. Seno
+        10. Tangente
+        11. Salir""")
         
         op = validar_entero ("Elija una operacion: ")
         
-        if op not in [1, 2, 3, 4, 5,6,7,8,9,10]:
-            print("Error la opcion es del 1 al 9")
+        if op not in [1, 2, 3, 4, 5,6,7,8,9,10,11]:
+            print("Error la opcion es del 1 al 11")
             
         else:  
             if op == 1:
@@ -49,21 +51,24 @@ def calculadora():
                 num2= validar_flotante("ingrese el valor de el exponente de la potencia: ")
                 print("el resultado de la multiplicacion es: ", num1**num2)
             elif op == 6:
-                num1= validar_num_positivo("ingrese el valor de su raiz cuadrada: ")
-                print(f"el resultado de la raiz cuadrada de {num1} es: ", num1**0.5)
+                num1= validar_flotante("ingrese el valor de su raiz cuadrada: ")
+                print(f"el resultado de la raiz cuadrada de {num1} es: ", cmath.sqrt(num1))
             elif op == 7:
+                num1= validar_flotante("ingrese el valor de su raiz cubica: ")
+                print(f"el resultado de la raiz cubica de {num1} es: ", round(math.cbrt(num1), 9))
+            elif op == 8:
                 num1=validar_flotante("ingrese los grados de su coseno: ")
                 resultado = math.cos(math.radians(num1))
                 print(f"el resultado del coseno de {num1}° es: ",resultado)
-            elif op == 8:
+            elif op == 9:
                 num1=validar_flotante("ingrese los grados de su seno: ")
                 resultado = math.sin(math.radians(num1))
                 print(f"el resultado del seno de {num1}° es: ",resultado)
-            elif op == 9:
+            elif op == 10:
                 num1=validar_flotante("ingrese los grados de su tangente: ")
                 resultado = math.tan(math.radians(num1))
                 print(f"el resultado de la tangente de {num1}° es: ",resultado)
-            elif op == 10:
+            elif op == 11:
                 print("Se ha cerrado el programa")
                 
         continuar = input("Desea continuar (s/n): ").lower()
