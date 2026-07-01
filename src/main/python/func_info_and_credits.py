@@ -39,6 +39,17 @@ def info_and_credits():
     ---
     """
 
+    # SOPORTE DE RESPALDO SEGURO PARA WINDOWS (Evita caídas si falta el paquete tzdata)
+    try:
+        tz_caracas = ZoneInfo("America/Caracas")
+        info_tz_name = datetime.now(tz_caracas).tzname()
+        info_tz_loc = str(tz_caracas)
+        info_tz_time = datetime.now(tz_caracas).strftime("%Y-%m-%d %H:%M:%S")
+    except Exception:
+        info_tz_name = "VET (Huso Horario No Detectado)"
+        info_tz_loc = "America/Caracas (Requiere paquete tzdata)"
+        info_tz_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " (Usando Hora Local)"
+
     print(f"{ansi_text.ORANGE}={ansi_text.RESET}" * 95)
     print(f"{ansi_text.WHITE}CENTRO DE INFORMACION Y CREDITOS{ansi_text.RESET}".center(95))
     print(f"{ansi_text.ORANGE}={ansi_text.RESET}" * 95)
@@ -47,13 +58,13 @@ def info_and_credits():
     print(f"{ansi_text.CYAN}- Hecho en: {ansi_text.RESET}Coro, Falcon, Venezuela. 2026.")
     print(f"{ansi_text.CYAN}- Version: {ansi_text.RESET}Beta v1.0.0")
     print(f"{ansi_text.CYAN}- Hora actual: {ansi_text.RESET}", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    print(f"{ansi_text.CYAN}- Zona horaria: {ansi_text.RESET}", datetime.now(ZoneInfo("America/Caracas")).tzname())
-    print(f"{ansi_text.CYAN}- Ubicacion de la zona horaria: {ansi_text.RESET}", ZoneInfo("America/Caracas"))
+    print(f"{ansi_text.CYAN}- Zona horaria: {ansi_text.RESET}", info_tz_name)
+    print(f"{ansi_text.CYAN}- Ubicacion de la zona horaria: {ansi_text.RESET}", info_tz_loc)
     print(f"{ansi_text.CYAN}- Fecha y hora UTC: {ansi_text.RESET}", datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"))
     print(f"{ansi_text.CYAN}- Fecha y hora local: {ansi_text.RESET}", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print(f"{ansi_text.CYAN}- Fecha y hora del sistema: {ansi_text.RESET}", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print(f"{ansi_text.CYAN}- Fecha y hora del sistema en UTC: {ansi_text.RESET}", datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"))
-    print(f"{ansi_text.CYAN}- Fecha y hora del sistema en zona horaria: {ansi_text.RESET}", datetime.now(ZoneInfo("America/Caracas")).strftime("%Y-%m-%d %H:%M:%S"))
+    print(f"{ansi_text.CYAN}- Fecha y hora del sistema en zona horaria: {ansi_text.RESET}", info_tz_time)
     print(f"{ansi_text.CYAN}- Sistema operativo: {ansi_text.RESET}", os.name)
     print(f"{ansi_text.CYAN}- Plataforma: {ansi_text.RESET}", sys.platform)
     print(f"{ansi_text.CYAN}- Version de Python: {ansi_text.RESET}", sys.version)
@@ -68,7 +79,7 @@ def info_and_credits():
     print(f"{ansi_text.CYAN}- Directorio temporal: {ansi_text.RESET}", os.path.abspath(os.getenv("TMPDIR", "/tmp")))
     print(f"{ansi_text.CYAN}- Directorio de trabajo: {ansi_text.RESET}", os.path.abspath(os.getcwd()))
     print(f"{ansi_text.CYAN}- Files en el directorio actual: {ansi_text.RESET}", os.listdir(os.getcwd()))
-    print(f"{ansi_text.CYAN}- Variables de entorno: {ansi_text.RESET}", os.environ)
+    print(f"{ansi_text.CYAN}- Variables de entorno: {ansi_text.RESET}", "[OCULTO POR SEGURIDAD EN INTERFAZ]") # Nota: imprimir os.environ directamente satura la pantalla CLI con strings masivos impredecibles.
     print(f"{ansi_text.CYAN}- Ruta del script: {ansi_text.RESET}", os.path.abspath(__file__))
     print(f"{ansi_text.GRAY}Datos de depuración del Intérprete:{ansi_text.RESET}")
     print(f"- Entorno (__name__): {__name__} (Modo de ejecución directa)")
@@ -113,4 +124,4 @@ SOFTWARE.{ansi_text.RESET}
 
 if __name__ == "__main__":
     clear_window()
-    module_error(__name__, __file__, __package__, __doc__)
+    info_and_credits() # CORREGIDO: Ahora ejecuta la función en lugar de forzar un error de módulo
