@@ -1,26 +1,66 @@
-def convertir(monto, de, a):
+from func_comprobacion import validar_mayor_cero
 
+def convertir():
+    """
+    Solicita al usuario las divisas de origen y destino, junto con el monto, 
+    para calcular y mostrar el resultado de la conversión.
 
-    # Paso 1: elegir la moneda que se usara como base
-    if de in ["bolivares", "bolívares", "BOLIVARES", "Bolivares"]:
+    --- 
+    Args:
+        None.
+    --- 
+    Returns:
+        None.
+    --- 
+    Raises:
+        Exception: Si ocurre un error inesperado.
+    --- 
+    """
+    moneda = ["bolivares", "bolívares", "usd", "eur"]
+
+    # Validación de la moneda que se desea convertir
+    while True:
+        de = input("De (bolivares, usd, eur): ").lower()
+        if de in moneda:
+            break
+        print("Error: Moneda. Intenta de nuevo.")
+
+    # Validación de la moneda a la que se desea convertir
+    while True:
+        a = input("A (bolivares, usd, eur): ").lower()
+        if a in moneda:
+            break
+        print("Error: Moneda. Intenta de nuevo.")
+
+    # Validación del monto a convertir
+    while True:
+        try:
+            monto = validar_mayor_cero("Monto a convertir: ")
+            break
+        except ValueError:
+            print("Error: Por favor ingresa un número válido.\n")
+
+    # Paso 1: Convertir a la moneda que se desea convertir (base)
+    if de in ["bolivares", "bolívares"]:
         base = monto
-    elif de in ["usd", "USD", "Usd"]:
-        base = monto * 623.02
-    elif de in ["eur", "EUR", "Eur"]:
+    elif de == "usd":
+        base = monto * 633.02
+    elif de == "eur":
         base = monto * 710.10
-    else:
-        return None 
 
-    # Paso 2: la moneda a la que se quiere convertir pe
-    if a in ["bolivares", "bolívares", "BOLIVARES", "Bolivares"]:
-        return base
-    elif a in ["usd", "USD", "Usd"]:
-        return base / 623.02
-    elif a in ["eur", "EUR", "Eur"]:
-        return base / 710.10
-    else:
-        return None
+    # Paso 2: Convertir de la base a la moneda de destino
+    if a in ["bolivares", "bolívares"]:
+        resultado = base
+    elif a == "usd":
+        resultado = base / 633.02
+    elif a == "eur":
+        resultado = base / 710.10
 
+    # Paso 3: Mostrar el resultado
+    print(f"Resultado: {resultado:.2f} \n")
+
+
+# Bucle principal del menú
 while True:
     print("\n--- CONVERSOR DE DIVISAS ---")
     print("1. Convertir")
@@ -33,16 +73,7 @@ while True:
         break
         
     elif opcion == "1":
-        de = input("De (bolivares, usd, eur): ")
-        a = input("A (bolivares, usd, eur): ")
-        monto = float(input("Cantidad: "))
+        convertir()
         
-        resultado = convertir(monto, de, a)
-        
-        if resultado is not None:
-            print(f"Resultado: {resultado:.2f} {a}")
-        else:
-            print("Error: Moneda no reconocida.")
-            
     else:
         print("Opción inválida.")
