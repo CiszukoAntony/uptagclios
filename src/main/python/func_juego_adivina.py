@@ -20,7 +20,7 @@ def juego_adivina_el_numero():
         
         # Bienvenida
         print("=" * 45)
-        print(f"{utils.ansi.GREEN} ¡BIENVENIDO AL JUEGO DE ADIVINA EL NÚMERO! ")
+        print(f"{utils.ansi_text.GREEN} ¡BIENVENIDO AL JUEGO DE ADIVINA EL NÚMERO! ")
         print("=" * 45)
         print("He pensado un número entre 1 y 100.")
         print("Intenta adivinarlo en el menor número de intentos posible.\n")
