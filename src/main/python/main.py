@@ -143,15 +143,11 @@ SOFTWARE."""
 
 # Importacion de librerias y modulos.
 
-import time
-import os
-import random
-import math
-import platform
 import sys
-## from func_divisa import convertir
-import func_comprobacion
 import func_juego_piedra_papel_tijera
+import func_juego_adivina
+import func_info_and_credits
+import func_divisa
 from utils import clear_window, loading, ansi_text, init_username, call_username, main_error, module_error
 
 # Main.
@@ -260,22 +256,22 @@ def main():
             print(f"\n{call_username()}{ansi_text.WHITE}, seleccionó la opción {ansi_text.ORANGE}{opciones[opcion_usuario]}.{ansi_text.RESET}")
 
             if opcion_usuario == 0:
-                print("Deberia mostrar el calculadora cientifica")
+                print("Deberia mostrar el calculadora cientifica") # Ivan
 
             elif opcion_usuario == 1:
-                convertir()
+                func_divisa.convertir()
 
             elif opcion_usuario == 2:
-                print("Deberia mostrar el juego de adivina el numero")
+                func_juego_adivina.juego_adivina_el_numero()
 
             elif opcion_usuario == 3:
                 func_juego_piedra_papel_tijera.jugar()
 
             elif opcion_usuario == 4:
-                print("Deberia mostrar el manual de uso")
+                print("Deberia mostrar el manual de uso") # Hanzer
 
             elif opcion_usuario == 5:
-                print("Deberia mostrar informacion del SO y creditos")
+                func_info_and_credits.info_and_credits()
 
             elif opcion_usuario == 6:
                 break
