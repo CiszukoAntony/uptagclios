@@ -39,9 +39,9 @@ def jugar():
     """
     opciones = ["piedra", "papel", "tijera"]
     
-    print("=" * 35)
+    print("=" * 90)
     print(f"{utils.ansi_text.GREEN}¡Bienvenido a Piedra, Papel o Tijera!")
-    print("=" * 35)
+    print("=" * 90)
     
     # Entrada del jugador
     usuario = input("Elige una opción (piedra, papel, tijera): ").lower()
