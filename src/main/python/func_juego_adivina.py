@@ -20,15 +20,15 @@ def juego_adivina_el_numero():
         
         # Bienvenida
         print("=" * 45)
-        print(f"{utils.ansi_text.GREEN} ¡BIENVENIDO AL JUEGO DE ADIVINA EL NÚMERO! ")
+        print(f"{utils.ansi_text.GREEN} ¡BIENVENIDO AL JUEGO DE ADIVINA EL NÚMERO!{utils.ansi_text.RESET} ")
         print("=" * 45)
-        print("He pensado un número entre 1 y 100.")
-        print("Intenta adivinarlo en el menor número de intentos posible.\n")
+        print(f" {utils.ansi_text.BLUE} He pensado un número entre 1 y 100.{utils.ansi_text.RESET}")
+        print(f" {utils.ansi_text.GREEN}Intenta adivinarlo en el menor número de intentos posible.{utils.ansi_text.RESET}\n")
         
         # Bucle principal de la partida actual
         while not adivinado:
             intentos += 1
-            print(f"--- Intento número {intentos} ---")
+            print(f"--- {utils.ansi_text.GREEN}Intento número {intentos} --- {utils.ansi_text.RESET}")
             
             # Bucle de solicitud y validación de datos
             while True:
@@ -36,22 +36,22 @@ def juego_adivina_el_numero():
                     intento_usuario = int(input("Introduce tu número: "))
                     break  # Salimos del bucle de validación si es un entero válido
                 except ValueError:
-                    print("❌ Entrada inválida. Por favor, introduce un número entero.")
+                    print(f"{utils.ansi_text.RED}❌ Entrada inválida. Por favor, introduce un número entero.{utils.ansi_text.RESET}")
             
             # Verificación del número
             if intento_usuario < numero_secreto:
-                print("➡️ Demasiado bajo. ¡Intenta con uno más grande!\n")
+                print(f"{utils.ansi_text.GREEN}➡️ Demasiado bajo. ¡Intenta con uno más grande!\n")
             elif intento_usuario > numero_secreto:
-                print("➡️ Demasiado alto. ¡Intenta con uno más chico!\n")
+                print(f"➡️ Demasiado alto. ¡Intenta con uno más chico!{utils.ansi_text.RESET}\n")
             else:
-                print("\n🎉 ¡Felicidades! ¡Has adivinado el número secreto!")
-                print(f"🏆 Te tomó un total de {intentos} intentos ganar la partida.\n")
+                print(f"\n🎉 {utils.ansi_text.YELLOW}¡Felicidades! ¡Has adivinado el número secreto!")
+                print(f"🏆 Te tomó un total de {intentos} intentos ganar la partida.\n{utils.ansi_text.RESET}")
                 adivinado = True
         
         # Preguntar si desea volver a jugar
-        otra_vez = input("¿Quieres jugar otra partida? (s/n): ").lower().strip()
+        otra_vez = input(f"{utils.ansi_text.GREEN}¿Quieres jugar otra partida? (s/n): ").lower().strip()
         if otra_vez != 's':
-            print("\n👋 ¡Gracias por jugar! Hasta la próxima.")
+            print(f"\n👋 ¡Gracias por jugar! Hasta la próxima{utils.ansi_text.RESET}.")
             break
         print("\n" * 2)  # Separador para la nueva partida
 
