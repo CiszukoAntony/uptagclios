@@ -11,6 +11,8 @@ Raises:
     ValueError: Si el valor ingresado no corresponde al tipo de dato esperado (manejado internamente).
 --- 
 """
+from utils import module_error,clear_window
+
 def validar_flotante(mensaje):
     """
     Solicita un número flotante y no se detiene hasta que sea válido.
@@ -121,3 +123,8 @@ def validar_mayor_cero(mensaje):
                 print("Error:La cantidad debe ser mayor o igual a cero. Intente de nuevo.")
         except ValueError:
             print("Error: Introduzca un número válido.")
+### Comprobación de main ###
+
+if __name__ == "__main__":
+    clear_window()
+    module_error(__name__, __file__, __package__, __doc__)
