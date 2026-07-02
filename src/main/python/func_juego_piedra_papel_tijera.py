@@ -8,6 +8,7 @@
     ---
     Return:
           Retorna si el usuario ingresa opcion que no es valida
+          Retorna si el usuario quiere salir 
     ---
     Raises:
        None
@@ -35,6 +36,7 @@ def jugar():
     ---
     Return:
          Retorna si la opcion que ingresa el usuario no es valida 
+         Retorna si el usuario quiere salir
     --- 
     Raises:
          None
@@ -50,12 +52,15 @@ def jugar():
     
     # Entrada del jugador
     usuario = input("Elige una opción (piedra, papel, tijera): ").lower()
-    
+    # verifica si el usuario quiere salir 
+    if usuario == "salir":
+       print ("Gracias por jugar hasta la proxima")
+       return
     # Validar que la entrada sea correcta
     if usuario not in opciones:
         print(f"{utils.ansi_text.RESET} {utils.ansi_text.RED}Opción no válida. Inténtalo de nuevo escribiendo piedra, papel o tijera.{utils.ansi_text.RESET}")
         return
-
+       
     # Elección de la computadora
     computadora = random.choice(opciones)
     print(f"{utils.ansi_text.BLUE}\nTú elegiste: {usuario.capitalize()}")
