@@ -123,4 +123,4 @@ def main():
             input()
 if __name__ == "__main__":
     clear_window()
-    module_error(__name__, __file__, __package__
+    module_error(__name__, __file__, __package__)
