@@ -121,6 +121,9 @@ def main():
             print("\n¡Opción inválida! Por favor, elige 1-6.")
             print("Presiona ENTER para continuar...")
             input()
+
+### Comprobación de main ###
+
 if __name__ == "__main__":
     clear_window()
-    module_error(__name__, __file__, __package__)
+    module_error(__name__, __file__, __package__, __doc__)

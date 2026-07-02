@@ -143,11 +143,10 @@ SOFTWARE."""
 
 # Importacion de librerias y modulos.
 
-import time
-import os
 import sys
 import func_juego_piedra_papel_tijera
 import func_juego_adivina
+import func_manual_de_uso
 import func_info_and_credits
 import func_divisa
 from utils import clear_window, loading, ansi_text, init_username, call_username, main_error, module_error
@@ -270,7 +269,7 @@ def main():
                 func_juego_piedra_papel_tijera.jugar()
 
             elif opcion_usuario == 4:
-                print("Deberia mostrar el manual de uso") # Hanzer
+                func_manual_de_uso.main()
 
             elif opcion_usuario == 5:
                 func_info_and_credits.info_and_credits()
