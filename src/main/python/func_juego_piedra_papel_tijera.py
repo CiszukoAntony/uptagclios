@@ -1,7 +1,7 @@
-### Ejecuta una partdia del juego Piedra, Papel o tijera contra la computadora 
-  ### pide datos al usuario para la eleccion
-  ###genera una opcion aleatoria de la computadora que determina el resultado 
-  ### gana el usuario o gana la computadora o hay un empate 
+""" Ejecuta una partdia del juego Piedra, Papel o tijera contra la computadora 
+  pide datos al usuario para la eleccion
+  genera una opcion aleatoria de la computadora que determina el resultado 
+    gana el usuario o gana la computadora o hay un empate"""
 
 import random
 import utils 
@@ -22,17 +22,11 @@ def jugar():
         nones.
     ---
     
-    raises:
-       nones.
-    ---
-    
-    returns:
-       Retorna si la opcion que ingresa el usuario no es valida 
+    Return:
+         Retorna si la opcion que ingresa el usuario no es valida 
     --- 
     
-    inputs:
-        pide una opcion al usuario para escoger piedra, papel o tijera 
-    
+    Raises
     
     
     
