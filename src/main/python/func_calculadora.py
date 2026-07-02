@@ -13,7 +13,7 @@ Raises:
 """
 
 import math
-from utils import module_error,clear_window
+from utils import module_error,clear_window,ansi_text
 from func_comprobacion import validar_flotante,validar_divisor,validar_entero
 def calculadora():
     """
@@ -35,8 +35,8 @@ def calculadora():
     # Menu de la calculadora
     while True:
         print("Ingresa cual operacion quieres realizar")
-        print("="*90)
-        print("""
+        print(f"{ansi_text.ORANGE}={ansi_text.RESET}"*90)
+        print(f"""{ansi_text.BLUE}
         1. Suma
         2. Resta
         3. Multiplicacion
@@ -48,8 +48,8 @@ def calculadora():
         9. Coseno
         10. Seno
         11. Tangente
-        12. Salir""")
-        print("="*90)
+        12. Salir{ansi_text.RESET}""")
+        print(f"{ansi_text.ORANGE}={ansi_text.RESET}"*90)
         
         op = validar_entero ("Elija una operacion: ")
         #opcion no valida
