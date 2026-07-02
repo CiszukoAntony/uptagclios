@@ -26,7 +26,8 @@ def jugar():
          Retorna si la opcion que ingresa el usuario no es valida 
     --- 
     
-    Raises
+    Raises:
+         nones.
     
     
     
