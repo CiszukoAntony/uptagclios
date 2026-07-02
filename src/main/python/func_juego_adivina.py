@@ -1,9 +1,22 @@
-"""Esta función centraliza toda la lógica del juego:
+""" Esta función centraliza toda la lógica del juego:
     #1. Muestra la bienvenida.
     #2. Genera un número aleatorio entre 1 y 100.
     #3. Solicita y valida que la entrada del usuario sea un número entero.
     #4. Compara el intento, da pistas (alto/bajo) y cuenta los intentos.
-    #5. Permite reiniciar el juego al terminar."""
+    #5. Permite reiniciar el juego al terminar.
+    ---
+    Args:
+        None
+    ---
+    Returns:
+        None
+    ---
+    Raises:
+        
+        except
+        Retorna un ValueError
+    ---
+    """
 
 
 import random
@@ -23,17 +36,14 @@ def juego_adivina_el_numero():
     
     
     Args:
-        none.
+        None
     ---
     Returns:
-        none.
+        None
     ---
     Raises:
         except: Retorna un valueErrror
     ---
-    
-    
-    
     
     """
     while True:

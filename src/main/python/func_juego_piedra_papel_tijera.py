@@ -10,25 +10,23 @@ def jugar():
     """
     
     Ejecuta una partida del juego Piedra, Papel o Tijera contra la computadora.
-     ---
+    -
      
-    La función solicita la elección del usuario por consola, valida la entrada,
-    genera una opción aleatoria para la computadora y determina el resultado
-    (gana el usuario, gana la computadora o hay un empate).
+       La función solicita la elección del usuario por consola, valida la entrada,
+       genera una opción aleatoria para la computadora y determina el resultado
+       (gana el usuario, gana la computadora o hay un empate).
     
     ---
     
     Args: 
-        nones.
+        None
     ---
-    
     Return:
          Retorna si la opcion que ingresa el usuario no es valida 
     --- 
-    
     Raises:
-         nones.
-    
+         None
+    ---
     
     
     """
