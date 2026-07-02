@@ -1,7 +1,19 @@
 """ Ejecuta una partdia del juego Piedra, Papel o tijera contra la computadora 
   pide datos al usuario para la eleccion
   genera una opcion aleatoria de la computadora que determina el resultado 
-    gana el usuario o gana la computadora o hay un empate"""
+    gana el usuario o gana la computadora o hay un empate
+    
+    Args:
+       None
+    ---
+    Return
+          Retorna si el usuario ingresa opcion que no es valida
+    ---
+    Raises 
+       None
+    ---
+    
+    """
 
 import random
 import utils 
