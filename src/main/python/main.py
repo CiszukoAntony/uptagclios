@@ -146,6 +146,7 @@ SOFTWARE."""
 import sys
 import func_juego_piedra_papel_tijera
 import func_juego_adivina
+import func_calculadora
 import func_manual_de_uso
 import func_info_and_credits
 import func_divisa
@@ -257,7 +258,7 @@ def main():
             print(f"\n{call_username()}{ansi_text.WHITE}, seleccionó la opción {ansi_text.ORANGE}{opciones[opcion_usuario]}.{ansi_text.RESET}")
 
             if opcion_usuario == 0:
-                print("Deberia mostrar el calculadora cientifica") # Ivan
+                func_calculadora.calculadora()
 
             elif opcion_usuario == 1:
                 func_divisa.convertir()
