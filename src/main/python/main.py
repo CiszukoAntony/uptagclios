@@ -143,6 +143,7 @@ SOFTWARE."""
 
 # Importacion de librerias y modulos.
 
+import time
 import sys
 import func_juego_piedra_papel_tijera
 import func_juego_adivina
