@@ -81,5 +81,5 @@ echo %GREEN%[ÉXITO]%RESET% %CYAN%Python%RESET% %WHITE%detectado correctamente e
 echo %WHITE%Iniciando UPTAG CLI OS...%RESET%
 timeout /t 2 >nul
 :: CORRECCIÓN CRÍTICA DE RUTA: Se eliminó la carpeta virtual '\python' para apuntar al main.py real en el directorio raíz del script.
-start "UPTAG CLI OS" /MAX /D "%~dp0python" cmd /k "python main.py"
+start "UPTAG CLI OS" /MAX /D "%~dp0src/main/python" cmd /k "python main.py"
 exit
