@@ -51,7 +51,7 @@ def jugar():
     print("=" * 90)
     
     # Entrada del jugador
-    usuario = input("Elige una opción (piedra, papel, tijera): ").lower()
+    usuario = input("Elige una opción (piedra, papel, tijera O Salir): ").lower()
     # verifica si el usuario quiere salir 
     if usuario == "salir":
        print ("Gracias por jugar hasta la proxima")
